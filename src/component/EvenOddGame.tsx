@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import correct from "./audio/correct.wav";
 import incorrect from './audio/incorrect.mp3'
+// import crowed from './audio/crowd.mp3'
 import './EvenOddGame.css';
 
 interface GameState {
@@ -22,6 +23,7 @@ const EvenOddGame: React.FC = () => {
   });
   const [start , setStart] = useState(false);
   const [popup , setPopup] = useState(false);
+  const [lose , setLose] = useState(false)
 
   function handleGuess(guess: "even" | "odd") {
     const { number } = gameState;
@@ -94,25 +96,30 @@ else{
   {
         const audio = new Audio(correct);
         audio.play();
+        
+        // const audio2 = new Audio(crowed);
+        // audio2.play()
         handleQuit()
         setPopup(true)
        
         
   }
+  
  
   if (gameState.numLose >= 5)
   {
      const audio = new Audio(incorrect)
      audio.play();
+     setLose(true)
      handleQuit()
   }
     return (
       <div className="container">
         <div className="container-2">
           <h1> Odd Even Game</h1>
-          <button id="btn-quit" onClick={handleQuit}>
+          {/* <button id="btn-quit" onClick={handleQuit}>
             restart
-          </button>
+          </button> */}
           {start === true ? (
             <div className="container-value">
               <p id="correct-value">Correct: {gameState.numWins}</p>
@@ -135,11 +142,21 @@ else{
           )}
           {popup && (
             <div className="popup">
-              <div className="popup-inner">
+              <div className="popup-win">
                 <p>{gameState.feedback}</p>
                 <h2>Congratulations!</h2>
                 <p>You won the game!</p>
                 <button onClick={() => setPopup(false)}>OK</button>
+              </div>
+            </div>
+          )}
+          {lose && (
+            <div className="popup">
+              <div className="popup-lose">
+                <p>Oops,  You lose Dude!</p>
+                
+                <p>Try Again Later</p>
+                <button onClick={() => setLose(false)}>OK</button>
               </div>
             </div>
           )}

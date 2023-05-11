@@ -78,3 +78,11 @@ font-family: 'GAME', sans-serif;
   margin-top: -2.2rem;
   color: red;
 }
+.popup-lose{
+color: red;
+margin-top: 4rem;
+}
+.popup-win{
+color: green;
+margin-top: 4rem;
+}
