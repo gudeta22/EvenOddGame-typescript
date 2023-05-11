@@ -1,0 +1,80 @@
+@import url('link: https://www.fontspace.com/evil-empire-font-f41587');
+.container {
+  background-color: yellowgreen;
+  margin: 10rem;
+  border-radius: 0.4rem;
+  height: 30rem;
+  width: 30rem;
+  background-image: url("https://www.shutterstock.com/image-photo/close-calendar-on-green-table-planning-1774630043");
+}
+#btn-even {
+  padding: auto;
+  margin-right: 5rem;
+  margin-top: 5rem;
+  padding: 0.5rem;
+  padding-left: 1.9rem;
+  padding-right: 1.9rem;
+  margin-top: 3.5em;
+  border: none;
+  font-weight: bold;
+  background-color: transparent;
+  font-size: 1.9rem;
+font-family: 'GAME', sans-serif;
+ font-style: italic;
+  cursor: pointer;
+}
+#btn-even:hover {
+  color: yellow;
+}
+#btn-odd {
+  padding: auto;
+
+  padding: 0.5rem;
+  padding-left: 1.9rem;
+  padding-right: 1.9rem;
+  margin-top: 3.5em;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 1.9rem;
+  font-family:'Evil Empire', sans-serif; 
+  font-style: italic;
+  cursor: pointer;
+}
+#btn-odd:hover{
+   color: yellow;
+}
+#num-random {
+  border: solid;
+  border-radius: 100%;
+  width: 1.2rem;
+  padding: 2rem;
+  margin-left: 12rem;
+  margin-top: 3rem;
+  font-size: larger;
+}
+#btn-quit {
+  margin-right: 26rem;
+  
+  border: none;
+  background-color: transparent;
+  font-size: 1.9rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: italic;
+  cursor: pointer;
+ 
+}
+#btn-quit:hover {
+  color: yellow;
+}
+
+#correct-value {
+  margin-left: -22rem;
+  color: green;
+}
+#incorrect-value {
+  margin-left: 20rem;
+  margin-top: -2.2rem;
+  color: red;
+}

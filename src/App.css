@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+ background-image: url('https://static.vecteezy.com/system/resources/previews/015/286/178/non_2x/abstract-backgrounds-hexagon-horizon-blue-80-s-90-s-retro-virtual-world-game-virtual-reality-in-cinema-or-future-vector.jpg');
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .App-logo {
