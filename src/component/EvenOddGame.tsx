@@ -6,7 +6,7 @@ import "./EvenOddGame.css";
 
 interface GameState {
   number: number;
-  guess: "even" | "odd" | "";
+  guess: "even" | "odd" | "?" | string;
   feedback: string;
   numWins: number;
   numLose: number;
@@ -26,11 +26,12 @@ const EvenOddGame: React.FC = () => {
   const [start, setStart] = useState(false);
   const [popup, setPopup] = useState(false);
   const [lose, setLose] = useState(false);
+ 
   
  
   
 
- function handleGuess(guess: "even" | "odd") {
+ function handleGuess(guess: "even" | "odd" | "") {
    const randomNumber = Math.floor(Math.random() * 200) + 1; // Generate a random number
    const isEven = randomNumber % 2 === 0;
    const feedback =
@@ -63,7 +64,7 @@ const EvenOddGame: React.FC = () => {
   function handleQuit() {
     setGameState({
       number: 0,
-      guess: "",
+      guess: "?",
       feedback: "Thanks for playing!",
       numWins: 0,
       numLose: 0,
@@ -96,6 +97,7 @@ const EvenOddGame: React.FC = () => {
  
   const handleStart = () => {
     setStart(!false);
+    
   };
 
   if (gameState.numWins >= 10) {
