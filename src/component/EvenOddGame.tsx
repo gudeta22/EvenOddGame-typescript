@@ -100,7 +100,7 @@ const EvenOddGame: React.FC = () => {
     
   };
 
-  if (gameState.numWins >= 10) {
+  if (gameState.numWins >= 3) {
     const audio = new Audio(correct);
     audio.play();
 
@@ -108,13 +108,15 @@ const EvenOddGame: React.FC = () => {
     // audio2.play()
     handleQuit();
     setPopup(true);
+    setStart(false)
   }
 
-  if (gameState.numLose >= 5) {
+  if (gameState.numLose >= 9) {
     const audio = new Audio(incorrect);
     audio.play();
     setLose(true);
     handleQuit();
+    setStart(false)
   }
   return (
     <div className="container">
@@ -127,6 +129,7 @@ const EvenOddGame: React.FC = () => {
             <p id="incorrect-value">Incorrect: {gameState.numLose}</p>
             <p id="num-round">Rounds: {gameState.numRounds}</p>
             <p id="level-value">Level : {gameState.level}</p>
+            <p id="Guess-Number">Guess the next Number?</p>
             <p id="num-random">{gameState.number}</p>
 
             <button id="btn-even" onClick={() => handleGuess("even")}>

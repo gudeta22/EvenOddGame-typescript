@@ -6,7 +6,7 @@
   margin-top: 10em;
   justify-self: center;
   border-radius: 0.4rem;
-  height: 35rem;
+  height: 40rem;
   width: 30rem;
   color: white;
     font-family:'Evil Empire', sans-serif; 
@@ -40,7 +40,7 @@
   padding: auto;
 
   padding: 0.5rem;
-  padding-left: 1.9rem;
+  padding-left: 2rem;
   padding-right: 1.9rem;
   margin-top: 3.5em;
   border: solid;
@@ -95,9 +95,12 @@ h1{
      font-weight: bold;
 
 }
+#Guess-Number{
+  color: yellow;
+}
 #incorrect-value {
   margin-left: 20rem;
-  margin-top: -2.2rem;
+  margin-top: -2.5rem;
   color: red;
   font-family:'Evil Empire', sans-serif; 
   font-size: large;
@@ -121,6 +124,21 @@ h1{
   border-top-left-radius: 0.5rem;
 
 }
+#btn-win{
+   padding: 0.5rem;
+  padding-left: 1.9rem;
+  padding-right: 1.9rem;
+  
+  border: solid;
+  background-color: transparent;
+  color: yellow;
+  font-size: 1.9rem;
+  font-family:'Evil Empire', sans-serif; 
+  font-style: italic;
+  cursor: pointer;
+  font-weight: lighter;
+  border-top-left-radius: 0.5rem;
+}
 .popup-lose{
 color: red;
 margin-top: 4rem;
@@ -129,7 +147,7 @@ margin-top: 4rem;
 
 }
 .popup-win{
-color: green;
+color: yellow;
 margin-top: 4rem;
   animation: bounce 1s;
 }
