@@ -1,8 +1,10 @@
 @import url('link: https://www.fontspace.com/evil-empire-font-f41587');
 .container {
   background-color: yellowgreen;
-  margin: 10rem;
-  margin-right: 10em;
+  margin: auto;
+  margin-right:700px;
+  margin-top: 10em;
+  justify-self: center;
   border-radius: 0.4rem;
   height: 35rem;
   width: 30rem;
@@ -101,13 +103,44 @@ h1{
   font-size: large;
 
 }
+#btn-lose{
+  
+
+  padding: 0.5rem;
+  padding-left: 1.9rem;
+  padding-right: 1.9rem;
+  
+  border: solid;
+  background-color: transparent;
+  color: red;
+  font-size: 1.9rem;
+  font-family:'Evil Empire', sans-serif; 
+  font-style: italic;
+  cursor: pointer;
+  font-weight: lighter;
+  border-top-left-radius: 0.5rem;
+
+}
 .popup-lose{
 color: red;
 margin-top: 4rem;
   font-family:'Evil Empire', sans-serif; 
+    animation: bounce 1s;
 
 }
 .popup-win{
 color: green;
 margin-top: 4rem;
+  animation: bounce 1s;
+}
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  70% {
+    transform: translateY(-10px);
+  }
 }

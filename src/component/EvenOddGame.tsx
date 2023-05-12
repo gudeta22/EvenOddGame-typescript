@@ -11,6 +11,7 @@ interface GameState {
   numWins: number;
   numLose: number;
   numRounds: number;
+  level: number;
 }
 const EvenOddGame: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>({
@@ -20,40 +21,44 @@ const EvenOddGame: React.FC = () => {
     numWins: 0,
     numLose: 0,
     numRounds: 0,
+    level: 1,
   });
   const [start, setStart] = useState(false);
   const [popup, setPopup] = useState(false);
   const [lose, setLose] = useState(false);
+  
+ 
+  
 
-  function handleGuess(guess: "even" | "odd") {
-    const { number } = gameState;
-    const isEven = number % 2 === 0;
-    const feedback =
-      isEven === (guess === "even")
-        ? "You got it right!"
-        : "Oops, wrong guess.";
-    const numWins =
-      isEven === (guess === "even") ? gameState.numWins + 1 : gameState.numWins;
-    const numLose =
-      isEven === (guess !== "even") ? gameState.numLose + 1 : gameState.numLose;
-    const numRounds = gameState.numRounds + 1;
-    const nextNumber = generateRandomNumber();
+ function handleGuess(guess: "even" | "odd") {
+   const randomNumber = Math.floor(Math.random() * 200) + 1; // Generate a random number
+   const isEven = randomNumber % 2 === 0;
+   const feedback =
+     isEven === (guess === "even") ? "You got it right!" : "Oops, wrong guess.";
+   const numWins =
+     isEven === (guess === "even") ? gameState.numWins + 1 : gameState.numWins;
+   const numLose =
+     isEven === (guess !== "even") ? gameState.numLose + 1 : gameState.numLose;
+   const numRounds = gameState.numRounds + 1;
 
-    if (feedback === "Oops, wrong guess.") {
-      soundEffect();
-    } else {
-      soundEffectCorrect();
-    }
+   const level =
+     numWins === 10 || numWins === 15 ? gameState.level + 1 : gameState.level;
+   if (feedback === "Oops, wrong guess.") {
+     soundEffect();
+   } else {
+     soundEffectCorrect();
+   }
 
-    setGameState({
-      number: nextNumber,
-      guess,
-      feedback,
-      numWins,
-      numLose,
-      numRounds,
-    });
-  }
+   setGameState({
+     number: randomNumber,
+     guess,
+     feedback,
+     numWins,
+     numLose,
+     numRounds,
+     level,
+   });
+ }
 
   function handleQuit() {
     setGameState({
@@ -63,6 +68,7 @@ const EvenOddGame: React.FC = () => {
       numWins: 0,
       numLose: 0,
       numRounds: 0,
+      level: 1,
     });
   }
 
@@ -82,9 +88,12 @@ const EvenOddGame: React.FC = () => {
       console.log("Error playing sound effect:", error);
     }
   };
+
   function generateRandomNumber() {
-    return Math.floor(Math.random() * 100) + 1;
+      return Math.floor(Math.random() * 200) + 1;
   }
+ 
+ 
   const handleStart = () => {
     setStart(!false);
   };
@@ -115,16 +124,18 @@ const EvenOddGame: React.FC = () => {
             <p id="correct-value">Correct: {gameState.numWins}</p>
             <p id="incorrect-value">Incorrect: {gameState.numLose}</p>
             <p id="num-round">Rounds: {gameState.numRounds}</p>
+            <p id="level-value">Level : {gameState.level}</p>
             <p id="num-random">{gameState.number}</p>
+
             <button id="btn-even" onClick={() => handleGuess("even")}>
               Even
             </button>
             <button id="btn-odd" onClick={() => handleGuess("odd")}>
               Odd
             </button>
-             <button id="btn-quit" onClick={handleQuit}>
-            restart
-            </button> 
+            <button id="btn-quit" onClick={handleQuit}>
+              restart
+            </button>
           </div>
         ) : (
           <>
@@ -139,17 +150,16 @@ const EvenOddGame: React.FC = () => {
               <p>{gameState.feedback}</p>
               <h2>Congratulations!</h2>
               <p>You won the game!</p>
-              <button onClick={() => setPopup(false)}>OK</button>
+              <button id="btn-win" onClick={() => setPopup(false)}>OK</button>
             </div>
           </div>
         )}
         {lose && (
           <div className="popup">
             <div className="popup-lose">
-              <p>Oops, You lose Dude!</p>
-
-              <p>Try Again Later</p>
-              <button onClick={() => setLose(false)}>OK</button>
+              <p>Oops,You lose Dude!</p>
+              <p>Try Again!</p>
+              <button id="btn-lose" onClick={() => setLose(false)}>OK</button>
             </div>
           </div>
         )}
