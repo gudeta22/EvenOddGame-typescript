@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/evenodd/static/css/main.bfb95693.css",
+    "main.js": "/evenodd/static/js/main.3170ff7d.js",
+    "static/js/787.b747b331.chunk.js": "/evenodd/static/js/787.b747b331.chunk.js",
+    "static/media/correct.wav": "/evenodd/static/media/correct.a673b70c68f18f662b4c.wav",
+    "static/media/incorrect.mp3": "/evenodd/static/media/incorrect.9f6441ad95020f32e955.mp3",
+    "index.html": "/evenodd/index.html",
+    "main.bfb95693.css.map": "/evenodd/static/css/main.bfb95693.css.map",
+    "main.3170ff7d.js.map": "/evenodd/static/js/main.3170ff7d.js.map",
+    "787.b747b331.chunk.js.map": "/evenodd/static/js/787.b747b331.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bfb95693.css",
+    "static/js/main.3170ff7d.js"
+  ]
+}
