@@ -144,3 +144,12 @@ margin-top: 4rem;
     transform: translateY(-10px);
   }
 }
+
+@media only screen and (max-width: 767px) {
+
+ .container{
+  margin: auto;
+  margin-top: 10em;
+ }
+
+}
