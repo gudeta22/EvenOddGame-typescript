@@ -5,7 +5,10 @@
   border-radius: 0.4rem;
   height: 30rem;
   width: 30rem;
-  background-image: url("https://www.shutterstock.com/image-photo/close-calendar-on-green-table-planning-1774630043");
+  color: white;
+    font-family:'Evil Empire', sans-serif; 
+   font-weight: lighter;
+  background-image: url("https://img.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_79603-1409.jpg?w=740&t=st=1683864930~exp=1683865530~hmac=b68f2d360e533fd46d9cb33abce8d182d59168f8c58a035c34962450496d4084");
 }
 #btn-even {
   padding: auto;
@@ -15,13 +18,16 @@
   padding-left: 1.9rem;
   padding-right: 1.9rem;
   margin-top: 3.5em;
-  border: none;
-  font-weight: bold;
-  background-color: transparent;
+  border: solid;
+  color: white;
+ font-weight: lighter;
+   background-color: transparent;
   font-size: 1.9rem;
-font-family: 'GAME', sans-serif;
+  font-family:'Evil Empire', sans-serif; 
  font-style: italic;
   cursor: pointer;
+   border-top-left-radius: 0.5rem;
+
 }
 #btn-even:hover {
   color: yellow;
@@ -33,13 +39,18 @@ font-family: 'GAME', sans-serif;
   padding-left: 1.9rem;
   padding-right: 1.9rem;
   margin-top: 3.5em;
-  border: none;
+  border: solid;
   background-color: transparent;
-  font-weight: bold;
+  color: white;
   font-size: 1.9rem;
   font-family:'Evil Empire', sans-serif; 
   font-style: italic;
   cursor: pointer;
+  font-weight: lighter;
+  border-top-left-radius: 0.5rem;
+}
+h1{
+  padding-top: 0.6em;
 }
 #btn-odd:hover{
    color: yellow;
@@ -47,11 +58,13 @@ font-family: 'GAME', sans-serif;
 #num-random {
   border: solid;
   border-radius: 100%;
-  width: 1.2rem;
+  width: 1.4rem;
   padding: 2rem;
   margin-left: 12rem;
   margin-top: 3rem;
-  font-size: larger;
+  font-size: x-large;
+    font-family:'Evil Empire', sans-serif; 
+
 }
 #btn-quit {
   margin-right: 26rem;
@@ -71,16 +84,25 @@ font-family: 'GAME', sans-serif;
 
 #correct-value {
   margin-left: -22rem;
-  color: green;
+  color: Yellow;
+    font-family:'Evil Empire', sans-serif; 
+     font-size: large;
+     font-weight: bold;
+
 }
 #incorrect-value {
   margin-left: 20rem;
   margin-top: -2.2rem;
   color: red;
+  font-family:'Evil Empire', sans-serif; 
+  font-size: large;
+
 }
 .popup-lose{
 color: red;
 margin-top: 4rem;
+  font-family:'Evil Empire', sans-serif; 
+
 }
 .popup-win{
 color: green;
