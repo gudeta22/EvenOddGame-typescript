@@ -2,12 +2,14 @@
 .container {
   background-color: yellowgreen;
   margin: 10rem;
+  margin-right: 10em;
   border-radius: 0.4rem;
-  height: 30rem;
+  height: 35rem;
   width: 30rem;
   color: white;
     font-family:'Evil Empire', sans-serif; 
    font-weight: lighter;
+ box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   background-image: url("https://img.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_79603-1409.jpg?w=740&t=st=1683864930~exp=1683865530~hmac=b68f2d360e533fd46d9cb33abce8d182d59168f8c58a035c34962450496d4084");
 }
 #btn-even {
@@ -67,11 +69,12 @@ h1{
 
 }
 #btn-quit {
-  margin-right: 26rem;
-  
+  margin-right: 8rem;
+  margin-top: 2em;
   border: none;
   background-color: transparent;
-  font-size: 1.9rem;
+  
+  font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-style: italic;

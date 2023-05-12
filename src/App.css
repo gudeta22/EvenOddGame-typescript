@@ -1,9 +1,9 @@
 .App {
   text-align: center;
- 
+   /* background-image: url("https://img.freepik.com/free-vector/colorful-futuristic-background-with-shiny-particles_52683-42650.jpg?size=626&ext=jpg&ga=GA1.2.669628069.1683823780&semt=ais"); */
   width: 100%;
   height: 100%;
-  background-repeat: no-repeat;
+  background-repeat:no-repeat;
   background-size: cover;
 }
 

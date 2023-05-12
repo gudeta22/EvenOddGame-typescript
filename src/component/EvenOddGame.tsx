@@ -109,9 +109,7 @@ const EvenOddGame: React.FC = () => {
     <div className="container">
       <div className="container-2">
         <h1> Odd-Even Game</h1>
-        {/* <button id="btn-quit" onClick={handleQuit}>
-            restart
-          </button> */}
+
         {start === true ? (
           <div className="container-value">
             <p id="correct-value">Correct: {gameState.numWins}</p>
@@ -124,6 +122,9 @@ const EvenOddGame: React.FC = () => {
             <button id="btn-odd" onClick={() => handleGuess("odd")}>
               Odd
             </button>
+             <button id="btn-quit" onClick={handleQuit}>
+            restart
+            </button> 
           </div>
         ) : (
           <>
