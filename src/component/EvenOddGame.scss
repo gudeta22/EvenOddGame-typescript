@@ -1,4 +1,5 @@
 @import url('link: https://www.fontspace.com/evil-empire-font-f41587');
+
 .container {
   background-color: yellowgreen;
   margin: auto;
@@ -61,6 +62,7 @@ h1{
 }
 #num-random {
   border: solid;
+  transition: all 0.3s ease;
   border-radius: 100%;
   width: 1.4rem;
   padding: 2rem;

@@ -1,114 +1,115 @@
+/**
+ * Purpose:-The purpose of this file is to implement the Even-Odd Game component. The game allows users to guess whether a randomly generated number is even or odd.
+ * Logic:-The file implements the game logic by maintaining the game state, handling user interactions, and updating the state accordingly. It generates a random number, 
+ *   checks the user's guess, and keeps track of the number of wins, losses, and rounds. It also handles game flow by controlling the start, quit, and win/lose conditions.
+ * Usage:-This file is used as a component in a React application. It can be included and rendered within other components or pages where the Even-Odd Game functionality is required. 
+ *   It provides an interactive interface for users to play the game.
+ * Depends on:-
+ *           useState: hook for managing the game state.
+ *           useSpring:from the "react-spring library for animating the number display.
+ * Communicates with: the file doesn't directly communicates with external service
+ *           
+ * 
+ */
+
 import React, { useState } from "react";
 import correct from "./audio/correct.wav";
 import incorrect from "./audio/incorrect.mp3";
-// import crowed from './audio/crowd.mp3'
-import "./EvenOddGame.css";
+
+import { useSpring, animated } from "react-spring";
+import "./EvenOddGame.scss";
 
 interface GameState {
-  number: number;
-  guess: "even" | "odd" | "?" | string;
+  number: number | null;
+  guess: "even" | "odd" | "?" | string | null;
   feedback: string;
   numWins: number;
   numLose: number;
   numRounds: number;
-  level: number;
 }
+
 const EvenOddGame: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>({
-    number: generateRandomNumber(),
-    guess: "",
+    number: null,
+    guess: null,
     feedback: "Make a guess whether the number is even or odd.",
     numWins: 0,
     numLose: 0,
     numRounds: 0,
-    level: 1,
   });
+
   const [start, setStart] = useState(false);
   const [popup, setPopup] = useState(false);
   const [lose, setLose] = useState(false);
- 
-  
- 
-  
 
- function handleGuess(guess: "even" | "odd" | "") {
-   const randomNumber = Math.floor(Math.random() * 200) + 1; // Generate a random number
-   const isEven = randomNumber % 2 === 0;
-   const feedback =
-     isEven === (guess === "even") ? "You got it right!" : "Oops, wrong guess.";
-   const numWins =
-     isEven === (guess === "even") ? gameState.numWins + 1 : gameState.numWins;
-   const numLose =
-     isEven === (guess !== "even") ? gameState.numLose + 1 : gameState.numLose;
-   const numRounds = gameState.numRounds + 1;
+  const randomNumberProps = useSpring({
+    number: gameState.number || 0,
+    from: { number: 0 },
+    config: { duration: 100 },
+  });
 
-   const level =
-     numWins === 10 || numWins === 15 ? gameState.level + 1 : gameState.level;
-   if (feedback === "Oops, wrong guess.") {
-     soundEffect();
-   } else {
-     soundEffectCorrect();
-   }
+  function handleGuess(guess: "even" | "odd" | "") {
+    const randomNumber = Math.floor(Math.random() * 200) + 1;
 
-   setGameState({
-     number: randomNumber,
-     guess,
-     feedback,
-     numWins,
-     numLose,
-     numRounds,
-     level,
-   });
- }
+    const isEven = randomNumber % 2 === 0;
+    const feedback =
+      isEven === (guess === "even")
+        ? "You got it right!"
+        : "Oops, wrong guess.";
+    const numWins =
+      isEven === (guess === "even") ? gameState.numWins + 1 : gameState.numWins;
+    const numLose =
+      isEven === (guess !== "even") ? gameState.numLose + 1 : gameState.numLose;
+    const numRounds = gameState.numRounds + 1;
+
+    if (feedback === "Oops, wrong guess.") {
+      soundEffectIncorrect();
+    } else {
+      soundEffectCorrect();
+    }
+
+    setGameState({
+      number: randomNumber,
+      guess,
+      feedback,
+      numWins,
+      numLose,
+      numRounds,
+    });
+  }
 
   function handleQuit() {
     setGameState({
       number: 0,
-      guess: "?",
+      guess: null,
       feedback: "Thanks for playing!",
       numWins: 0,
       numLose: 0,
       numRounds: 0,
-      level: 1,
     });
   }
 
-  const soundEffect = () => {
-    try {
-      const audio = new Audio(incorrect);
-      audio.play();
-    } catch (error) {
-      console.log("Error playing sound effect:", error);
-    }
-  };
-  const soundEffectCorrect = () => {
-    try {
-      const audio = new Audio(correct);
-      audio.play();
-    } catch (error) {
-      console.log("Error playing sound effect:", error);
-    }
+  const soundEffectIncorrect = () => {
+    const audio = new Audio(incorrect);
+    audio.play();
   };
 
-  function generateRandomNumber() {
-      return Math.floor(Math.random() * 200) + 1;
-  }
- 
- 
+  const soundEffectCorrect = () => {
+    const audio = new Audio(correct);
+    audio.play();
+  };
+
   const handleStart = () => {
     setStart(!false);
-    
   };
 
   if (gameState.numWins >= 3) {
     const audio = new Audio(correct);
     audio.play();
 
-    // const audio2 = new Audio(crowed);
-    // audio2.play()
     handleQuit();
     setPopup(true);
-    setStart(false)
+    setStart(false);
   }
 
   if (gameState.numLose >= 9) {
@@ -116,7 +117,7 @@ const EvenOddGame: React.FC = () => {
     audio.play();
     setLose(true);
     handleQuit();
-    setStart(false)
+    setStart(false);
   }
   return (
     <div className="container">
@@ -128,9 +129,13 @@ const EvenOddGame: React.FC = () => {
             <p id="correct-value">Correct: {gameState.numWins}</p>
             <p id="incorrect-value">Incorrect: {gameState.numLose}</p>
             <p id="num-round">Rounds: {gameState.numRounds}</p>
-            <p id="level-value">Level : {gameState.level}</p>
+
             <p id="Guess-Number">Guess the next Number?</p>
-            <p id="num-random">{gameState.number}</p>
+            <animated.p id="num-random">
+              {randomNumberProps.number.interpolate((value: number) =>
+                Math.floor(value)
+              )}
+            </animated.p>
 
             <button id="btn-even" onClick={() => handleGuess("even")}>
               Even
@@ -155,7 +160,9 @@ const EvenOddGame: React.FC = () => {
               <p>{gameState.feedback}</p>
               <h2>Congratulations!</h2>
               <p>You won the game!</p>
-              <button id="btn-win" onClick={() => setPopup(false)}>OK</button>
+              <button id="btn-win" onClick={() => setPopup(false)}>
+                OK
+              </button>
             </div>
           </div>
         )}
@@ -164,7 +171,9 @@ const EvenOddGame: React.FC = () => {
             <div className="popup-lose">
               <p>Oops,You lose Dude!</p>
               <p>Try Again!</p>
-              <button id="btn-lose" onClick={() => setLose(false)}>OK</button>
+              <button id="btn-lose" onClick={() => setLose(false)}>
+                OK
+              </button>
             </div>
           </div>
         )}
